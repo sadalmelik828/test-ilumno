@@ -1,0 +1,21 @@
+<div>
+  <h2>Formulario de Registro</h2>
+  <form [formGroup]="registroForm" (ngSubmit)="onSubmit(registroForm.value)">
+    <div>
+      <label for="name">Nombre: </label>
+      <input type="text" id="name" name="name" placeholder="Ingrese el nombre" required formControlName="name">
+    </div>
+    <div>
+      <label for="program">Programa de Interes: </label>
+      <select id="program" name="program" required formControlName="program">
+        <option *ngFor="let prog of programas" [value]="prog.id">{{prog.name}}</option>
+      </select>
+    </div>
+    <div>
+      <label for="comment">Comentario: </label>
+      <textarea id="comment" name="comment" cols="30" rows="10" formControlName="comment"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="!registroForm.valid">Enviar Registro</button>
+  </form>
+</div>
